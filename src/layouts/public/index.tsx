@@ -17,7 +17,7 @@ const PublicLayout = ({
   children = <></>,
   title = "",
   description,
-  ogImage = "https://movie-browse-website.vercel.app/default-movie.jpg",
+  ogImage = "https://movie-browse-web.vercel.app/default-movie.jpg",
 }: Props) => {
   return (
     <>
@@ -25,7 +25,7 @@ const PublicLayout = ({
         <title>{title}</title>
         <meta
           property="og:url"
-          content="https://movie-browse-website.vercel.app/default-movie.jpg"
+          content="https://movie-browse-web.vercel.app/default-movie.jpg"
         />
         <meta property="og:type" content="website" />
         <meta
@@ -41,7 +41,7 @@ const PublicLayout = ({
           content={
             ogImage
               ? ogImage
-              : "https://movie-browse-website.vercel.app/default-movie.jpg"
+              : "https://movie-browse-web.vercel.app/default-movie.jpg"
           }
         />
       </Head>
