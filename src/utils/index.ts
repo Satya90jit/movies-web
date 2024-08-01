@@ -1,4 +1,4 @@
-export const OMDbAPI = "http://www.omdbapi.com/";
+export const OMDbAPI = "https://www.omdbapi.com/";
 export const API_KEY = "121ed492";
 
 //SET To LocalStorage
