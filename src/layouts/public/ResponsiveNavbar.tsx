@@ -7,7 +7,7 @@ import { NavMenuItems } from "./Navbar";
 const ResponsiveNavbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <section className="lg:hidden py-4 cursor-pointer fixed top-0 bg-[#0A1121] shadow-md w-full">
+    <section className="lg:hidden py-4 cursor-pointer fixed top-0 bg-[#0A1121] shadow-md shadow-slate-800 w-full">
       <div className="h-full flex justify-between items-center w-full main-container">
         <div className="flex items-center gap-3">
           <img src="/favicon.ico" className="w-10 h-10" />

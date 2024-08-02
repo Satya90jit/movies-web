@@ -52,7 +52,7 @@ const Navbar = () => {
   const open = Boolean(anchorEl);
   return (
     <nav
-      className={`bg-[#080c14] shadow-md lg:h-20 items-center fixed top-0 justify-center flex lg:w-[99vw] w-full z-[999999]`}
+      className={`bg-[#080c14] shadow-md shadow-slate-800 lg:h-20 items-center fixed top-0 justify-center flex lg:w-[99vw] w-full z-[999999]`}
     >
       <div className="main-container hidden lg:flex flex-row justify-between items-center w-full">
         <div className="flex items-center gap-3">
