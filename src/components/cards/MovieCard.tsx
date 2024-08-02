@@ -17,7 +17,7 @@ const MovieCard = ({
   return (
     <section
       ref={lastMovieElementRef}
-      className="relative h-[23rem] border border-gray-200 shadow-lg rounded-lg overflow-hidden flex"
+      className="relative h-[23rem] border border-gray-600 shadow-lg rounded-lg overflow-hidden flex"
     >
       <div className="relative w-full">
         <img

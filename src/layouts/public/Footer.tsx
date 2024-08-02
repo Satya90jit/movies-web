@@ -169,7 +169,7 @@ const Footer = () => {
         </aside>
       </aside>
       {/* Copy Right Reserve part */}
-      <section className="bg-gray-950 w-full">
+      <section className="bg-[#0d1424] w-full">
         <div className="main-container flex md:flex-row flex-col gap-3 py-4 items-center justify-between">
           <p className="text-center text-white">
             © {new Date().getFullYear()} Movie-Web. All rights reserved.

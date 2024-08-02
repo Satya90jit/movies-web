@@ -144,7 +144,7 @@ const MoviesList = () => {
         onClearFilters={handleClearFilters}
         totalData={totalData}
       />
-      <div className="main-container lg:my-12 my-6 lg:mt-[12rem]">
+      <div className="main-container lg:mt-[12rem]">
         <header className="bg-[#0A1121] mb-8 overflow-hidden bg-[url('/Hero-BG.png')] bg-no-repeat bg-cover bg-center p-6 text-white text-center rounded-md">
           <h1 className="text-3xl font-bold mb-2">Movie Browser</h1>
           <p className="text-slate-200">
@@ -178,8 +178,10 @@ const MoviesList = () => {
           />
         ) : (
           <div className="w-full">
-            <h2 className="text-2xl mb-4 font-semibold">All Movies</h2>
-            <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 md:gap-4 gap-2 mb-8">
+            <h2 className="text-2xl mb-4 font-semibold text-white">
+              All Movies
+            </h2>
+            <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 md:gap-7 gap-2 pb-8">
               {filteredMovies.map((movie, index) => (
                 <MemorizeMovieCard
                   key={movie.imdbID}

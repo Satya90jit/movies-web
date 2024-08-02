@@ -14,7 +14,9 @@ const FavoriteMovieList = ({
   return (
     <section>
       <div>
-        <h2 className="text-2xl mb-4 font-semibold">Favorite Movies</h2>
+        <h2 className="text-2xl mb-4 font-semibold text-white">
+          Favorite Movies
+        </h2>
         {favorites?.length === 0 ? (
           <NoDataLoader text="No favorite movies yet." />
         ) : (
