@@ -1,6 +1,5 @@
 import MoviesList from "@/components/home/MovieList";
 import PublicLayout from "@/layouts/public";
-import React from "react";
 
 const Home = () => {
   return (

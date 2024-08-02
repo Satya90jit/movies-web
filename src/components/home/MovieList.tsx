@@ -1,16 +1,11 @@
 import useDebounce from "@/hooks/useDebounce";
-import { IMovie } from "@/types";
+import { Filters, IMovie } from "@/types";
 import { API_KEY, getFromLocalStorage, OMDbAPI } from "@/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MemorizeMovieCard } from "../cards";
 import { Loader, NoDataLoader } from "../core";
 import MemorizeFavoriteMovieList from "./FavoriteMovieList";
 import FilterBox from "./FilterBox";
-
-interface Filters {
-  Type: string;
-  Year: string;
-}
 
 const MoviesList = () => {
   const [query, setQuery] = useState("");
@@ -72,6 +67,7 @@ const MoviesList = () => {
       fetchMovies(debouncedQuery, 1);
     } else {
       setMovies([]);
+      setTotalData(0);
       setHasMore(false);
     }
   }, [debouncedQuery]);
