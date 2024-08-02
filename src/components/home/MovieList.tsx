@@ -145,7 +145,7 @@ const MoviesList = () => {
         totalData={totalData}
       />
       <div className="main-container">
-        <header className="lg:mt-[12rem] mb-5 overflow-hidden t py-6 text-white text-center">
+        <header className="lg:mt-[12rem] mb-5 overflow-hidden py-6 text-white text-center">
           <h1 className="text-3xl font-bold mb-2">Movie Browser</h1>
           <p className="text-slate-200">
             Discover and explore your favorite movies. Use the filters to refine
@@ -181,7 +181,7 @@ const MoviesList = () => {
             <h2 className="text-2xl mb-4 font-semibold text-white">
               All Movies
             </h2>
-            <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 md:gap-7 gap-2 pb-8">
+            <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 lg:gap-7 md:gap-5 gap-3 pb-8">
               {filteredMovies.map((movie, index) => (
                 <MemorizeMovieCard
                   key={movie.imdbID}

@@ -86,7 +86,10 @@ const FilterBox = ({
                 },
               "& .MuiMenuItem-root": {
                 backgroundColor: "black",
-                color: "white",
+                color: "yellow",
+              },
+              "& .MuiSelect-icon": {
+                color: "darkcyan",
               },
             }}
           >
@@ -124,6 +127,9 @@ const FilterBox = ({
               "& .MuiMenuItem-root": {
                 backgroundColor: "black",
                 color: "white",
+              },
+              "& .MuiSelect-icon": {
+                color: "darkcyan",
               },
             }}
           >
