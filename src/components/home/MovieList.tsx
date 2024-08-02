@@ -183,7 +183,7 @@ const MoviesList = () => {
         ) : (
           <div className="w-full">
             <h2 className="text-2xl mb-4 font-semibold">All Movies</h2>
-            <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 mb-8">
+            <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 md:gap-4 gap-2 mb-8">
               {filteredMovies.map((movie, index) => (
                 <MemorizeMovieCard
                   key={movie.imdbID}

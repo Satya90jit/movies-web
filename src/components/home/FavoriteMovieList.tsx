@@ -18,7 +18,7 @@ const FavoriteMovieList = ({
         {favorites?.length === 0 ? (
           <NoDataLoader text="No favorite movies yet." />
         ) : (
-          <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 w-full mb-8">
+          <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2  md:gap-4 gap-2 w-full mb-8">
             {favorites.map((data: any) => (
               <div key={data?.id}>
                 <MemorizeMovieCard
