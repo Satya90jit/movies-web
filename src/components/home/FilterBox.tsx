@@ -2,14 +2,7 @@ import { FilterList, FilterListOff, Search } from "@mui/icons-material";
 import { Button, MenuItem, TextField } from "@mui/material";
 import React from "react";
 
-const types = [
-  "movie",
-  "series",
-  "Documentary",
-  "Panel Show",
-  "Reality",
-  "Variety",
-];
+const types = ["movie", "series"];
 const years = Array.from({ length: 2024 - 1990 + 1 }, (_, i) =>
   (1990 + i).toString()
 );
@@ -56,7 +49,7 @@ const FilterBox = ({
       <div className="flex flex-row place-items-end gap-4 lg:w-[40%] w-full">
         <Button
           variant="contained"
-          className="bg-blue-950 text-white hover:bg-blue-900 w-8"
+          className="bg-blue-950 text-white w-8"
           onClick={onClearFilters}
           disabled={!filters.Type && !filters.Year}
         >
