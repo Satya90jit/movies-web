@@ -195,7 +195,9 @@ const MoviesList = () => {
               ))}
             </div>
             {loading && <Loader />}
-            {!loading && filteredMovies.length === 0 && <NoDataLoader />}
+            {!loading && filteredMovies.length === 0 && (
+              <NoDataLoader text="No Matching Movies Found" />
+            )}
           </div>
         )}
       </div>
