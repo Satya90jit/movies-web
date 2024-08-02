@@ -38,7 +38,11 @@ const MovieCard = ({
               onClick={toggleFavorite}
               className="absolute bottom-5 right-5 text-2xl text-red-500"
             >
-              {isFavorite ? <FaHeart /> : <FaRegHeart />}
+              {isFavorite ? (
+                <FaHeart className="scale-100 hover:scale-110 common-transition" />
+              ) : (
+                <FaRegHeart className="scale-100 hover:scale-110 common-transition" />
+              )}
             </button>
           </Tooltip>
           <div className="mt-auto">
