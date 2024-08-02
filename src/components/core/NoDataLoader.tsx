@@ -27,7 +27,7 @@ const NoDataLoader = ({ image, animeHight, animeWidth, text }: Props) => {
           width={animeWidth ? animeWidth : 250}
         />
       </div>
-      <span className="text-xl py-4 capitalize tracking-wide">
+      <span className="text-xl py-4 capitalize text-white tracking-wide">
         {text ? text : "No result found!"}
       </span>
     </div>
