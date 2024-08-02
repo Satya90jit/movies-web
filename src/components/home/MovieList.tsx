@@ -8,7 +8,7 @@ import MemorizeFavoriteMovieList from "./FavoriteMovieList";
 import FilterBox from "./FilterBox";
 
 const MoviesList = () => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("prem");
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -144,8 +144,8 @@ const MoviesList = () => {
         onClearFilters={handleClearFilters}
         totalData={totalData}
       />
-      <div className="main-container lg:mt-[12rem]">
-        <header className="bg-[#0A1121] mb-8 overflow-hidden bg-[url('/Hero-BG.png')] bg-no-repeat bg-cover bg-center p-6 text-white text-center rounded-md">
+      <div className="main-container">
+        <header className="lg:mt-[12rem] mb-5 overflow-hidden t py-6 text-white text-center">
           <h1 className="text-3xl font-bold mb-2">Movie Browser</h1>
           <p className="text-slate-200">
             Discover and explore your favorite movies. Use the filters to refine
