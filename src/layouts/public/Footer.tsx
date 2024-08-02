@@ -42,7 +42,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="p-6 bg-cyan-950/90 shadow-md rounded-lg lg:w-[45rem] w-full border border-slate-700">
+          <div className="md:p-6 p-3 bg-cyan-950/90 shadow-md rounded-lg lg:w-[45rem] w-full border border-slate-700">
             <div className="flex flex-col space-y-4">
               <div className="flex items-center">
                 <input
@@ -169,7 +169,7 @@ const Footer = () => {
         </aside>
       </aside>
       {/* Copy Right Reserve part */}
-      <section className="bg-slate-800 w-full">
+      <section className="bg-gray-950 w-full">
         <div className="main-container flex md:flex-row flex-col gap-3 py-4 items-center justify-between">
           <p className="text-center text-white">
             © {new Date().getFullYear()} Movie-Web. All rights reserved.
@@ -178,7 +178,7 @@ const Footer = () => {
             <span className="text-center text-white capitalize">
               designed & developed by
               <a
-                href="https://www.searchingyard.com"
+                href="/"
                 rel="noreferrer"
                 target="_blank"
                 className="hover:text-theme pl-2 text-white hover:underline"
