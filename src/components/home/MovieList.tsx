@@ -160,7 +160,7 @@ const MoviesList = () => {
               onClick={() => setShowFav(false)}
               className={`px-6 py-2 mx-2 ${
                 !showFav ? "bg-blue-900/90" : "bg-gray-500"
-              } text-white font-serif rounded-md focus:outline-none common-transition`}
+              } text-white md:text-base text-sm font-serif rounded-md focus:outline-none common-transition`}
             >
               All Movies
             </button>
@@ -168,7 +168,7 @@ const MoviesList = () => {
               onClick={() => setShowFav(true)}
               className={`px-6 py-2 mx-2 ${
                 showFav ? "bg-blue-900/90" : "bg-gray-500"
-              } text-white font-serif rounded-md focus:outline-none common-transition`}
+              } text-white md:text-base text-sm font-serif rounded-md focus:outline-none common-transition`}
             >
               Favorites
             </button>
