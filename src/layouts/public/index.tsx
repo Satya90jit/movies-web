@@ -17,7 +17,7 @@ const PublicLayout = ({
   children = <></>,
   title = "",
   description,
-  ogImage = "./no-image.jpg",
+  ogImage = "./home-page-ss.png",
 }: Props) => {
   return (
     <>
@@ -35,7 +35,7 @@ const PublicLayout = ({
         />
         <meta
           property="og:image"
-          content={ogImage ? ogImage : "./no-image.jpg"}
+          content={ogImage ? ogImage : "./home-page-ss.png"}
         />
       </Head>
 
