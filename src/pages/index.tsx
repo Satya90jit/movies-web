@@ -5,7 +5,7 @@ import React from "react";
 const Home = () => {
   return (
     <PublicLayout>
-      <section className="min-h-[90vh]">
+      <section className="min-h-[70vh]">
         <MoviesList />
       </section>
     </PublicLayout>

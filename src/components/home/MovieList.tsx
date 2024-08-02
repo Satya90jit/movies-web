@@ -120,7 +120,7 @@ const MoviesList = () => {
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
-  const isFavorite = (movie: any) => {
+  const isFavorite = (movie: IMovie) => {
     return favorites.some((fav) => fav?.imdbID === movie?.imdbID);
   };
 
@@ -157,10 +157,20 @@ const MoviesList = () => {
           </p>
           <div className="flex justify-center mt-4">
             <button
-              className="text-gray-900 bg-slate-200 border border-gray-100 px-6 py-2 rounded-md transition-colors duration-300 hover:bg-slate-300"
-              onClick={() => setShowFav(!showFav)}
+              onClick={() => setShowFav(false)}
+              className={`px-6 py-2 mx-2 ${
+                !showFav ? "bg-blue-900/90" : "bg-gray-500"
+              } text-white font-serif rounded-md focus:outline-none common-transition`}
             >
-              {showFav ? "View All Movies" : "View Favorites"}
+              All Movies
+            </button>
+            <button
+              onClick={() => setShowFav(true)}
+              className={`px-6 py-2 mx-2 ${
+                showFav ? "bg-blue-900/90" : "bg-gray-500"
+              } text-white font-serif rounded-md focus:outline-none common-transition`}
+            >
+              Favorites
             </button>
           </div>
         </header>
@@ -171,50 +181,26 @@ const MoviesList = () => {
             toggleFavorite={toggleFavorite}
           />
         ) : (
-          <aside>
-            <div className="w-full">
-              {filteredMovies && filteredMovies.length === 0 ? (
-                <NoDataLoader text="No Movies Found" />
-              ) : loading ? (
-                <Loader />
-              ) : (
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 w-full">
-                  {filteredMovies.map((data: any, index: number) => {
-                    if (filteredMovies.length === index + 1) {
-                      return (
-                        <div key={data.imdbID} ref={lastMovieElementRef}>
-                          <MemorizeMovieCard
-                            movie={data}
-                            isFavorite={isFavorite(data)}
-                            toggleFavorite={() => toggleFavorite(data)}
-                          />
-                        </div>
-                      );
-                    } else {
-                      return (
-                        <div key={data.imdbID}>
-                          <MemorizeMovieCard
-                            movie={data}
-                            isFavorite={isFavorite(data)}
-                            toggleFavorite={() => toggleFavorite(data)}
-                          />
-                        </div>
-                      );
-                    }
-                  })}
-                </div>
-              )}
-              {loading && (
-                <div className="flex items-center justify-center h-[5rem] w-full">
-                  <div className="flex space-x-2 animate-pulse">
-                    <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
-                    <div className="w-3 h-3 bg-gray-900 rounded-full"></div>
-                    <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
-                  </div>
-                </div>
-              )}
+          <div className="w-full">
+            <h2 className="text-2xl mb-4 font-semibold">All Movies</h2>
+            <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 mb-8">
+              {filteredMovies.map((movie, index) => (
+                <MemorizeMovieCard
+                  key={movie.imdbID}
+                  movie={movie}
+                  isFavorite={isFavorite(movie)}
+                  toggleFavorite={() => toggleFavorite(movie)}
+                  lastMovieElementRef={
+                    filteredMovies.length === index + 1
+                      ? lastMovieElementRef
+                      : null
+                  }
+                />
+              ))}
             </div>
-          </aside>
+            {loading && <Loader />}
+            {!loading && filteredMovies.length === 0 && <NoDataLoader />}
+          </div>
         )}
       </div>
     </section>

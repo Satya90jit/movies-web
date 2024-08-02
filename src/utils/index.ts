@@ -1,5 +1,5 @@
 export const OMDbAPI = "https://www.omdbapi.com/";
-export const API_KEY = "121ed492";
+export const API_KEY = "e0b94510";
 
 //SET To LocalStorage
 export const saveToLocalStorage = (key: any, value: any) => {
