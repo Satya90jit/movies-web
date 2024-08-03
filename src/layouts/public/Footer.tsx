@@ -102,7 +102,7 @@ const Footer = () => {
               Quick Links
             </h4>
             <div className="flex flex-col gap-2">
-              {QUICK_LINKS_ARR?.map((item: any, index: number) => {
+              {QUICK_LINKS_ARR?.map((item: string, index: number) => {
                 return (
                   <a key={index}>
                     <div className="flex flex-row items-center gap-1 hover:text-[#5eead4] cursor-pointer transition-all ease-in-out duration-75 text-slate-400 capitalize">

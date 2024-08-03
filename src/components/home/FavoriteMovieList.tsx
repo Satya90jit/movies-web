@@ -1,15 +1,19 @@
+import { IMovie } from "@/types";
 import { memo } from "react";
 import { MemorizeMovieCard } from "../cards";
 import { NoDataLoader } from "../core";
+
+type ToggleFavorite = (movie: IMovie) => void;
+type IsFavorite = (movie: IMovie) => boolean;
 
 const FavoriteMovieList = ({
   favorites,
   isFavorite,
   toggleFavorite,
 }: {
-  favorites: any;
-  isFavorite?: any;
-  toggleFavorite?: any;
+  favorites: IMovie[];
+  isFavorite: IsFavorite;
+  toggleFavorite: ToggleFavorite;
 }) => {
   return (
     <section>
@@ -20,11 +24,10 @@ const FavoriteMovieList = ({
         <NoDataLoader text="No favorite movies yet." />
       ) : (
         <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 lg:gap-7 md:gap-5 gap-3 w-full pb-8">
-          {favorites.map((data: any) => (
-            <div key={data?.id}>
+          {favorites.map((data: IMovie) => (
+            <div key={data?.imdbID}>
               <MemorizeMovieCard
                 movie={data}
-                key={data?.id}
                 isFavorite={isFavorite(data)}
                 toggleFavorite={() => toggleFavorite(data)}
               />

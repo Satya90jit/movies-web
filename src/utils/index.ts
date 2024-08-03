@@ -2,13 +2,13 @@ export const OMDbAPI = "https://www.omdbapi.com/";
 export const API_KEY = "e0b94510";
 
 //SET To LocalStorage
-export const saveToLocalStorage = (key: any, value: any) => {
+export const saveToLocalStorage = (key: string, value: any): void => {
   if (typeof window !== "undefined") {
     localStorage.setItem(key, value);
   }
 };
 // GET From LocalStorage
-export const getFromLocalStorage = (key: any) => {
+export const getFromLocalStorage = (key: string): any | null => {
   return typeof window !== "undefined"
     ? localStorage.getItem(key)
       ? localStorage.getItem(key)
@@ -16,7 +16,7 @@ export const getFromLocalStorage = (key: any) => {
     : null;
 };
 //  Remove from LocalStorage
-export const removeFromLocalStorage = (key: any) => {
+export const removeFromLocalStorage = (key: string): void => {
   if (typeof window !== "undefined") {
     localStorage.removeItem(key);
   }

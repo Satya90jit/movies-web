@@ -12,24 +12,26 @@ const MovieCard = ({
   movie: IMovie;
   isFavorite?: boolean;
   toggleFavorite?: () => void;
-  lastMovieElementRef?: any;
+  lastMovieElementRef?: React.Ref<HTMLDivElement>;
 }) => {
   return (
     <section
       ref={lastMovieElementRef}
-      className="relative h-[23rem] border border-gray-600 shadow-lg rounded-lg overflow-hidden flex"
+      className="relative h-[23rem] border border-gray-800 shadow-md shadow-slate-900 rounded-lg overflow-hidden flex"
     >
       <div className="relative w-full">
         <img
           src={
-            movie?.Poster && movie?.Poster !== "N/A"
+            movie?.Poster &&
+            movie?.Poster !== "N/A" &&
+            movie?.Poster !== undefined
               ? movie.Poster
               : "./no-image.jpg"
           }
           alt="movie image"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black  to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
         <div className="absolute inset-0 p-4 flex flex-col justify-between text-white">
           <Tooltip
             title={`${!isFavorite ? "Add To Favorite" : "Remove Favorite"}`}

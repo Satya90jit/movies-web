@@ -16,7 +16,7 @@ const MoviesList = () => {
   const [hasMore, setHasMore] = useState(false);
   const [showFav, setShowFav] = useState(false);
   const [totalData, setTotalData] = useState(0);
-  const [favorites, setFavorites] = useState<any[]>([]);
+  const [favorites, setFavorites] = useState<IMovie[]>([]);
   const [filters, setFilters] = useState<Filters>({
     Type: "",
     Year: "",

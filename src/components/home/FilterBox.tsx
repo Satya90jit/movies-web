@@ -27,7 +27,7 @@ const FilterBox = ({
   totalData,
 }: SearchBarProps) => {
   return (
-    <section className="md:py-8 py-6 bg-[#0c1324] lg:mt-20 mt-16 lg:fixed z-[999] lg:w-[99vw] w-full lg:top-0">
+    <section className="py-8 bg-[#0c1324] lg:mt-20 mt-16 lg:fixed z-[999] lg:w-[99.2vw] w-full lg:top-0">
       <div className="main-container flex lg:flex-row flex-col lg:gap-0 gap-6 justify-between items-center">
         <div className="flex items-center gap-12 lg:w-[60%] w-full">
           <div className="hidden lg:block">
