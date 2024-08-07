@@ -1,4 +1,4 @@
 export { default as FilterBox } from "./FilterBox";
 export { default as MovieList } from "./MovieList";
-export { default as MemorizeFavoriteMovieList } from "./FavoriteMovieList";
-export { default as MemorizeHeader } from "./Header";
+export { default as FavoriteMovieList } from "./FavoriteMovieList";
+export { default as MovieSectionHeader } from "./MovieSectionHeader";

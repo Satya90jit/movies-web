@@ -2,11 +2,11 @@ import { useDebounce, useFavorite } from "@/hooks";
 import { Filters, IMovie } from "@/types";
 import { API_KEY, OMDbAPI } from "@/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MemorizeMovieCard } from "../cards";
-import { Loader, NoDataLoader } from "../core";
-import MemorizeFavoriteMovieList from "./FavoriteMovieList";
+import { NoDataLoader, TextTitles } from "../core";
+import { MoviesGrid } from "../grids";
+import FavoriteMovieList from "./FavoriteMovieList";
 import FilterBox from "./FilterBox";
-import MemorizeHeader from "./Header";
+import MovieSectionHeader from "./MovieSectionHeader";
 
 const MoviesList = () => {
   const [query, setQuery] = useState("prem");
@@ -112,7 +112,7 @@ const MoviesList = () => {
     [loading, hasMore]
   );
   return (
-    <section className="w-full">
+    <>
       <FilterBox
         query={query}
         onSearchChange={handleSearchChange}
@@ -122,41 +122,30 @@ const MoviesList = () => {
         totalData={totalData}
       />
       <div className="main-container">
-        <MemorizeHeader showFav={showFav} setShowFav={setShowFav} />
+        <MovieSectionHeader showFav={showFav} setShowFav={setShowFav} />
         {showFav ? (
-          <MemorizeFavoriteMovieList
+          <FavoriteMovieList
             favorites={favorites}
             isFavorite={isFavorite}
             toggleFavorite={toggleFavorite}
           />
         ) : (
-          <div className="w-full">
-            <h2 className="text-2xl mb-4 font-semibold text-white">
-              All Movies
-            </h2>
-            <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 lg:gap-7 md:gap-5 gap-3 pb-8">
-              {filteredMovies.map((movie, index) => (
-                <MemorizeMovieCard
-                  key={movie.imdbID}
-                  movie={movie}
-                  isFavorite={isFavorite}
-                  toggleFavorite={toggleFavorite}
-                  lastMovieElementRef={
-                    filteredMovies.length === index + 1
-                      ? lastMovieElementRef
-                      : null
-                  }
-                />
-              ))}
-            </div>
-            {loading && <Loader />}
+          <>
+            <TextTitles title="All Movies" />
+            <MoviesGrid
+              movies={filteredMovies}
+              isFavorite={isFavorite}
+              toggleFavorite={toggleFavorite}
+              lastMovieElementRef={lastMovieElementRef}
+              loading={loading}
+            />
             {!loading && filteredMovies.length === 0 && (
               <NoDataLoader text="No Matching Movies Found" />
             )}
-          </div>
+          </>
         )}
       </div>
-    </section>
+    </>
   );
 };
 

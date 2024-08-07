@@ -1,5 +1,5 @@
 import { FilterList, FilterListOff, Search } from "@mui/icons-material";
-import { Button, MenuItem, TextField } from "@mui/material";
+import { MenuItem, TextField } from "@mui/material";
 import React from "react";
 
 const types = ["movie", "series"];
