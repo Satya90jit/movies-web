@@ -1,4 +1,5 @@
 import useDebounce from "@/hooks/useDebounce";
+import useFavorite from "@/hooks/useFavorite";
 import { Filters, IMovie } from "@/types";
 import { API_KEY, getFromLocalStorage, OMDbAPI } from "@/utils";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -16,20 +17,13 @@ const MoviesList = () => {
   const [hasMore, setHasMore] = useState(false);
   const [showFav, setShowFav] = useState(false);
   const [totalData, setTotalData] = useState(0);
-  const [favorites, setFavorites] = useState<IMovie[]>([]);
   const [filters, setFilters] = useState<Filters>({
     Type: "",
     Year: "",
   });
   const debouncedQuery = useDebounce(query, 500);
   const observer = useRef<IntersectionObserver>();
-
-  useEffect(() => {
-    const storedFavorites = JSON.parse(
-      getFromLocalStorage("favorites") || "[]"
-    );
-    setFavorites(storedFavorites);
-  }, []);
+  const { isFavorite, toggleFavorite, favorites } = useFavorite();
 
   //fetch movies
   const fetchMovies = async (searchQuery: string, page: number) => {
@@ -103,23 +97,6 @@ const MoviesList = () => {
   };
   const filteredMovies = applyFilters(movies);
 
-  // favorite movie store
-  const toggleFavorite = (movie: IMovie) => {
-    let updatedFavorites;
-    if (favorites.find((fav) => fav.imdbID === movie.imdbID)) {
-      updatedFavorites = favorites.filter(
-        (fav) => fav?.imdbID !== movie?.imdbID
-      );
-    } else {
-      updatedFavorites = [...favorites, movie];
-    }
-    setFavorites(updatedFavorites);
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  };
-  const isFavorite = (movie: IMovie) => {
-    return favorites.some((fav) => fav?.imdbID === movie?.imdbID);
-  };
-
   // infinite scrolling
   const lastMovieElementRef = useCallback(
     (node: any) => {
@@ -144,7 +121,7 @@ const MoviesList = () => {
         onClearFilters={handleClearFilters}
         totalData={totalData}
       />
-      <div className="main-container">
+      <div className="main-container  ">
         <header className="lg:mt-[12rem] mb-5 overflow-hidden py-6 text-white text-center">
           <h1 className="text-3xl font-bold mb-2">Movie Browser</h1>
           <p className="text-slate-200">
