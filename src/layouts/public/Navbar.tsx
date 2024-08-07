@@ -34,14 +34,17 @@ const Navbar = () => {
   const [currentMenu, setCurrentMenu] = useState(null);
   const router = useRouter();
 
-  const handleClick = (event: any, menu: any) => {
-    setAnchorEl(event.currentTarget);
-    setCurrentMenu(menu);
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
     setCurrentMenu(null);
+  };
+
+  const handleClick = (event: any, menu: any) => {
+    setAnchorEl(event.currentTarget);
+    setCurrentMenu(menu);
+    if (menu === currentMenu) {
+      handleClose();
+    }
   };
 
   const handleMenuClick = (path: string) => {
@@ -52,7 +55,7 @@ const Navbar = () => {
   const open = Boolean(anchorEl);
   return (
     <nav
-      className={`bg-[#080c14] shadow-md shadow-slate-800 lg:h-20 items-center fixed top-0 justify-center flex lg:w-[99.2vw] w-full z-[999999]`}
+      className={`bg-[#080c14] shadow-md shadow-slate-800 h-20 items-center sticky top-0 justify-center flex w-full z-[999999]`}
     >
       <div className="main-container hidden lg:flex flex-row justify-between items-center w-full">
         <div className="flex items-center gap-3">
