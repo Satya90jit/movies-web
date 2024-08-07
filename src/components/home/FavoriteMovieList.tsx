@@ -28,8 +28,8 @@ const FavoriteMovieList = ({
             <div key={data?.imdbID}>
               <MemorizeMovieCard
                 movie={data}
-                isFavorite={isFavorite(data)}
-                toggleFavorite={() => toggleFavorite(data)}
+                isFavorite={isFavorite}
+                toggleFavorite={toggleFavorite}
               />
             </div>
           ))}

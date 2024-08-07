@@ -10,10 +10,11 @@ const MovieCard = ({
   lastMovieElementRef,
 }: {
   movie: IMovie;
-  isFavorite?: boolean;
-  toggleFavorite?: () => void;
+  isFavorite: (movie: IMovie) => boolean;
+  toggleFavorite: (movie: IMovie) => void;
   lastMovieElementRef?: React.Ref<HTMLDivElement>;
 }) => {
+  const hasFavorite = isFavorite(movie);
   return (
     <section
       ref={lastMovieElementRef}
@@ -34,13 +35,13 @@ const MovieCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
         <div className="absolute inset-0 p-4 flex flex-col justify-between text-white">
           <Tooltip
-            title={`${!isFavorite ? "Add To Favorite" : "Remove Favorite"}`}
+            title={`${!hasFavorite ? "Add To Favorite" : "Remove Favorite"}`}
           >
             <button
-              onClick={toggleFavorite}
+              onClick={() => toggleFavorite(movie)}
               className="absolute bottom-5 right-5 text-2xl text-red-500"
             >
-              {isFavorite ? (
+              {hasFavorite ? (
                 <FaHeart className="scale-100 hover:scale-110 common-transition" />
               ) : (
                 <FaRegHeart className="scale-100 hover:scale-110 common-transition" />
