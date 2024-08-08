@@ -1,7 +1,7 @@
-import { useDebounce, useFavorite } from "@/hooks";
+import { useDebounce, useFavorite, useInfiniteScroll } from "@/hooks";
 import { Filters, IMovie } from "@/types";
 import { API_KEY, OMDbAPI } from "@/utils";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { NoDataLoader, TextTitles } from "../core";
 import { MoviesGrid } from "../grids";
 import FavoriteMovieList from "./FavoriteMovieList";
@@ -22,8 +22,8 @@ const MoviesList = () => {
     Year: "",
   });
   const debouncedQuery = useDebounce(query, 500);
-  const observer = useRef<IntersectionObserver>();
   const { isFavorite, toggleFavorite, favorites } = useFavorite();
+  const lastMovieElementRef = useInfiniteScroll({ loading, hasMore, setPage });
 
   //fetch movies
   const fetchMovies = async (searchQuery: string, page: number) => {
@@ -96,21 +96,6 @@ const MoviesList = () => {
     });
   };
   const filteredMovies = applyFilters(movies);
-
-  // infinite scrolling
-  const lastMovieElementRef = useCallback(
-    (node: any) => {
-      if (loading) return;
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          setPage((prevPage) => prevPage + 1);
-        }
-      });
-      if (node) observer.current.observe(node);
-    },
-    [loading, hasMore]
-  );
   return (
     <>
       <FilterBox

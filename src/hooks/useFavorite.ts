@@ -1,34 +1,18 @@
 import { IMovie } from "@/types";
-import { getFromLocalStorage, saveToLocalStorage } from "@/utils";
-import { useEffect, useState } from "react";
+import useLocalStorage from "./useLocalStorage";
 
 const useFavorite = () => {
-  const [favorites, setFavorites] = useState<IMovie[]>([]);
+  const {
+    data: favorites,
+    toggleData: toggleFavorite,
+    isDataStored: isFavorite,
+  } = useLocalStorage("favorites");
 
-  useEffect(() => {
-    const storedFavorites = JSON.parse(
-      getFromLocalStorage("favorites") || "[]"
-    );
-    setFavorites(storedFavorites);
-  }, []);
-
-  // favorite movie store
-  const toggleFavorite = (movie: IMovie) => {
-    let updatedFavorites;
-    if (favorites.find((fav) => fav.imdbID === movie.imdbID)) {
-      updatedFavorites = favorites.filter(
-        (fav) => fav?.imdbID !== movie?.imdbID
-      );
-    } else {
-      updatedFavorites = [...favorites, movie];
-    }
-    setFavorites(updatedFavorites);
-    saveToLocalStorage("favorites", JSON.stringify(updatedFavorites));
+  return {
+    favorites,
+    toggleFavorite: (movie: IMovie) => toggleFavorite(movie, "imdbID"),
+    isFavorite: (movie: IMovie) => isFavorite(movie, "imdbID"),
   };
-  const isFavorite = (movie: IMovie) => {
-    return favorites.some((fav) => fav?.imdbID === movie?.imdbID);
-  };
-  return { isFavorite, toggleFavorite, favorites };
 };
 
 export default useFavorite;
