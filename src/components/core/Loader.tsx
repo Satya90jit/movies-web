@@ -4,8 +4,14 @@ interface Props {
   image?: any;
   animeHight?: number;
   animeWidth?: number;
+  speed?: number;
 }
-const Loader = ({ image, animeHight = 250, animeWidth = 200 }: Props) => {
+const Loader = ({
+  image,
+  animeHight = 250,
+  animeWidth = 200,
+  speed = 1,
+}: Props) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -22,6 +28,7 @@ const Loader = ({ image, animeHight = 250, animeWidth = 200 }: Props) => {
         isClickToPauseDisabled={true}
         height={animeHight}
         width={animeWidth}
+        speed={speed}
       />
     </div>
   );
